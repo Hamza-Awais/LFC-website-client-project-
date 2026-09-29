@@ -1,10 +1,3 @@
-/* ==========================================================================
-   LFC — Lucky Fried Chicken | script.js
-   Menu data below is a SAMPLE placeholder (few items per category) so the
-   cart + checkout flow can be tested end to end. Full real menu with all
-   items/prices will replace this array in the next step.
-   ========================================================================== */
-
 const WHATSAPP_NUMBER = "923111444532"; // country code + number, no spaces or +
 
 const menuData = [
