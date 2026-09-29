@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "923111444532"; // country code + number, no spaces or +
+const WHATSAPP_NUMBER = "923111444532"; 
 
 const menuData = [
   { id: "zinger-burger", name: "Zinger Burger", price: 380, category: "burgers", img: "assets/zinger-burger.jpg", desc: "Crispy zinger patty, fresh lettuce" },
@@ -14,7 +14,7 @@ const menuData = [
 
 let cart = JSON.parse(localStorage.getItem("lfc-cart") || "[]");
 
-/* ---------- Menu rendering ---------- */
+
 
 function renderMenu(category = "deals") {
   const grid = document.getElementById("menu-grid");
@@ -53,7 +53,7 @@ document.getElementById("menu-grid").addEventListener("click", (e) => {
   addToCart(btn.dataset.id);
 });
 
-/* ---------- Cart logic ---------- */
+
 
 function addToCart(id) {
   const existing = cart.find((c) => c.id === id);
@@ -129,8 +129,6 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
   changeQty(btn.dataset.id, Number(btn.dataset.delta));
 });
 
-/* ---------- Cart drawer open/close ---------- */
-
 const cartDrawer = document.getElementById("cart-drawer");
 const cartOverlay = document.getElementById("cart-overlay");
 
@@ -147,8 +145,6 @@ document.getElementById("cart-btn").addEventListener("click", openCart);
 document.getElementById("cart-close").addEventListener("click", closeCart);
 cartOverlay.addEventListener("click", closeCart);
 
-/* ---------- Mobile nav toggle ---------- */
-
 const navLinks = document.getElementById("nav-links");
 document.getElementById("menu-toggle").addEventListener("click", () => {
   navLinks.classList.toggle("open");
@@ -157,7 +153,6 @@ navLinks.addEventListener("click", (e) => {
   if (e.target.tagName === "A") navLinks.classList.remove("open");
 });
 
-/* ---------- WhatsApp checkout ---------- */
 
 document.getElementById("checkout-btn").addEventListener("click", () => {
   if (cart.length === 0) {
@@ -177,7 +172,6 @@ document.getElementById("checkout-btn").addEventListener("click", () => {
   window.open(url, "_blank", "noopener,noreferrer");
 });
 
-/* ---------- Init ---------- */
 
 renderMenu("deals");
 renderCart();
