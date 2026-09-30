@@ -14,7 +14,6 @@
 </head>
 <body>
 
-  <!-- ============ HEADER / NAV ============ -->
   <header class="site-header" id="site-header">
     <div class="nav-wrap">
       <a href="#home" class="logo"><img src="assets/lfc-logo.png" alt="LFC - Lucky Fried Chicken" class="logo-img"></a>
@@ -37,7 +36,6 @@
     </div>
   </header>
 
-  <!-- ============ HERO ============ -->
   <section class="hero" id="home">
     <div class="hero-shapes" aria-hidden="true">
       <span class="shape shape-1"></span>
@@ -53,14 +51,12 @@
     </div>
   </section>
 
-  <!-- ============ MENU ============ -->
   <section class="menu-section" id="menu">
     <div class="section-heading">
       <p class="section-tag">Our Menu</p>
       <h2>Pick Your Favourites</h2>
     </div>
 
-    <!-- Category filter buttons -->
     <div class="menu-categories" id="menu-categories">
       <button class="cat-btn active" data-category="deals">Deals</button>
       <button class="cat-btn" data-category="burgers">Burgers</button>
@@ -70,25 +66,9 @@
       <button class="cat-btn" data-category="rolls">Rolls &amp; Paratha</button>
     </div>
 
-    <!-- Menu items get generated here by script.js once menu data is added -->
-    <div class="menu-grid" id="menu-grid">
-      <!-- TEMPLATE (for reference — script.js will build real cards from menu data):
-      <article class="menu-item" data-category="burgers">
-        <img src="assets/item-placeholder.jpg" alt="Item name" loading="lazy">
-        <div class="menu-item-info">
-          <h3>Item Name</h3>
-          <p class="item-desc">Short description</p>
-          <div class="item-footer">
-            <span class="item-price">Rs. 000</span>
-            <button class="add-btn" data-id="item-id">Add +</button>
-          </div>
-        </div>
-      </article>
-      -->
-    </div>
+    <div class="menu-grid" id="menu-grid"></div>
   </section>
 
-  <!-- ============ ABOUT / WHY US ============ -->
   <section class="about-strip">
     <div class="about-item">
       <span class="about-icon">🚚</span>
@@ -104,7 +84,6 @@
     </div>
   </section>
 
-  <!-- ============ LOCATION ============ -->
   <section class="location-section" id="location">
     <div class="section-heading">
       <p class="section-tag">Find Us</p>
@@ -112,35 +91,38 @@
     </div>
     <div class="location-content">
       <div class="location-details">
-        <p><strong>Address:</strong> <span id="branch-address">-- to be added --</span></p>
-        <p><strong>Delivery Areas:</strong> <span id="delivery-areas">-- to be added --</span></p>
-        <p><strong>Timing:</strong> <span id="branch-timing">-- to be added --</span></p>
+        <p><strong>Address:</strong> <span id="branch-address">26-Z, Iqbal Rd, opp. Government Girls High School, Shad Bagh, Lahore</span></p>
+        <p><strong>Delivery Areas:</strong> <span id="delivery-areas">Shad Bagh &amp; nearby areas — confirm exact radius with branch</span></p>
+        <p><strong>Timing:</strong> <span id="branch-timing">3:00 PM – 2:00 AM, daily</span></p>
       </div>
       <div class="location-map" id="location-map">
-        <!-- Google Maps embed goes here once address is confirmed -->
+        <iframe
+          src="https://www.google.com/maps?q=LFC+Lucky+Fried+Chicken+Shad+Bagh+Lahore&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="LFC location map">
+        </iframe>
       </div>
     </div>
   </section>
 
-  <!-- ============ CONTACT / SOCIAL ============ -->
   <footer class="site-footer" id="contact">
     <div class="footer-top">
       <div class="footer-brand">
-        <p class="logo">LFC</p>
+        <img src="assets/lfc-logo.png" alt="LFC Logo" class="footer-logo-img">
         <p>Little Place, Big Taste</p>
       </div>
       <div class="footer-contact">
-        <p>📞 <span id="footer-phone">-- to be added --</span></p>
+        <p>📞 <span id="footer-phone"><a href="tel:+923111444532">0311 1444532</a></span></p>
         <div class="social-links" id="social-links">
-          <a href="#" id="facebook-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
-          <a href="#" id="instagram-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+          <a href="https://www.facebook.com/lfcinstantkitchen" id="facebook-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+          <a href="https://www.instagram.com/lfcinstantkitchen" id="instagram-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
         </div>
       </div>
     </div>
     <p class="footer-bottom">&copy; 2026 LFC - Lucky Fried Chicken. All rights reserved.</p>
   </footer>
 
-  <!-- ============ CART DRAWER ============ -->
   <div class="cart-overlay" id="cart-overlay"></div>
   <aside class="cart-drawer" id="cart-drawer">
     <div class="cart-header">
