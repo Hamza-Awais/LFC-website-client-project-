@@ -1,20 +1,75 @@
-const WHATSAPP_NUMBER = "923111444532"; 
+const WHATSAPP_NUMBER = "923111444532";
 
 const menuData = [
-  { id: "zinger-burger", name: "Zinger Burger", price: 380, category: "burgers", img: "assets/zinger-burger.jpg", desc: "Crispy zinger patty, fresh lettuce" },
-  { id: "tower-burger", name: "Tower Burger", price: 580, category: "burgers", img: "assets/tower-burger.jpg", desc: "Loaded double-layer tower" },
-  { id: "premium-classic-medium", name: "Premium Classic Pizza (Medium)", price: 1100, category: "pizza", img: "assets/premium-classic.jpg", desc: "Choice of Chicken Tikka, Fajita or Supreme" },
-  { id: "crispy-chicken-3pc", name: "Crispy Chicken (3 pcs)", price: 660, category: "crispy", img: "assets/crispy-chicken.jpg", desc: "Golden fried, extra crispy" },
-  { id: "hot-wings-5pc", name: "Hot Wings (5 pcs)", price: 350, category: "crispy", img: "assets/hot-wings.jpg", desc: "Spicy tossed wings" },
-  { id: "french-fries-large", name: "French Fries (Large)", price: 350, category: "fries", img: "assets/french-fries.jpg", desc: "Golden, salted" },
+  // Deals
   { id: "family-deal", name: "Family Deal", price: 2100, category: "deals", img: "assets/family-deal.jpg", desc: "5 Zinger Burger, 1 Large Fries, 1.5 Ltr Drink" },
+  { id: "crispy-fun", name: "Crispy Fun", price: 800, category: "deals", img: "assets/crispy-fun.jpg", desc: "3 CH Pcs, 1 Burger Bun, 1 Dip Sauce, 0.5 Ltr Drink" },
+  { id: "couple-deal", name: "Couple Deal", price: 1000, category: "deals", img: "assets/couple-deal.jpg", desc: "1 Zinger Burger, 1 Zinger Shwarma, 1 Reg Fries, 0.5 Ltr Drink" },
+  { id: "masti-deal", name: "Masti Deal", price: 1250, category: "deals", img: "assets/masti-deal.jpg", desc: "2 Fillet Burger, 5 Nuggets, 1 Reg Fries, 1.5 Ltr Drink" },
+  { id: "friends-deal", name: "Friends Deal", price: 1100, category: "deals", img: "assets/friends-deal.jpg", desc: "2 Zinger, 3 Nuggets, 1 Reg Fries, 0.5 Ltr Drink" },
   { id: "student-deal", name: "Student Deal", price: 1450, category: "deals", img: "assets/student-deal.jpg", desc: "1 Zinger, 1 Patty Burger, 1 Dbl Kabab Shw, 1 Reg Fries, 5 Nuggets, 1.5 Ltr Drink" },
-  { id: "zinger-paratha", name: "Zinger Paratha Roll", price: 420, category: "rolls", img: "assets/zinger-paratha.jpg", desc: "Ask about today's discounted roll" },
+  { id: "kids-deal", name: "Kids Deal", price: 1050, category: "deals", img: "assets/kids-deal.jpg", desc: "2 Patty Burger, 5 Nuggets, 1 Reg Fries, 0.5 Ltr Drink" },
+  { id: "deal-1", name: "Deal 1", price: 1150, category: "deals", img: "assets/deal-1.jpg", desc: "1 Small Pizza, 1 Zinger Burger, 1 Reg Fries, 0.5 Ltr Drink" },
+  { id: "deal-2", name: "Deal 2", price: 1250, category: "deals", img: "assets/deal-2.jpg", desc: "1 Pizza Paratha, 1 Sticko Sandwich, 0.5 Ltr Drink" },
+  { id: "deal-3", name: "Deal 3", price: 2800, category: "deals", img: "assets/deal-3.jpg", desc: "1 Large Pizza, 3 Zinger Burger, 1 Large Fries, 1.5 Ltr Drink" },
+  { id: "deal-4", name: "Deal 4", price: 2370, category: "deals", img: "assets/deal-4.jpg", desc: "1 Medium Pizza, 10 Hot Wings, 2 CH Pcs, 1 Large Fries, 1.5 Ltr Drink" },
+  { id: "deal-5", name: "Deal 5", price: 2100, category: "deals", img: "assets/deal-5.jpg", desc: "1 Large Crown Pizza, 1 Behari Roll, 1.5 Ltr Drink" },
+
+  // Burgers
+  { id: "zinger-burger", name: "Zinger Burger", price: 380, category: "burgers", img: "assets/zinger-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "tower-burger", name: "Tower Burger", price: 580, category: "burgers", img: "assets/tower-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "max-burger", name: "Max Burger", price: 430, category: "burgers", img: "assets/max-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "fillet-burger", name: "Fillet Burger", price: 420, category: "burgers", img: "assets/fillet-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "double-patty-cheese-burger", name: "Double Patty Cheese Burger", price: 500, category: "burgers", img: "assets/double-patty-cheese-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "patty-burger", name: "Patty Burger", price: 300, category: "burgers", img: "assets/patty-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "mc-burger", name: "MC Burger", price: 400, category: "burgers", img: "assets/mc-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "chapli-burger", name: "Chapli Burger", price: 280, category: "burgers", img: "assets/chapli-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "tikka-tower-burger", name: "Tikka Tower Burger", price: 550, category: "burgers", img: "assets/tikka-tower-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "patty-chapli-cheese-burger", name: "Patty + Chapli Cheese Burger", price: 450, category: "burgers", img: "assets/patty-chapli-cheese-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "fish-burger-small", name: "Seasonal Fish Burger (Small)", price: 470, category: "burgers", img: "assets/fish-burger.jpg", desc: "Make it a meal +Rs. 150" },
+  { id: "fish-burger-large", name: "Seasonal Fish Burger (Large)", price: 800, category: "burgers", img: "assets/fish-burger.jpg", desc: "Make it a meal +Rs. 150" },
+
+  // Pizza
+  { id: "signature-pizza-medium", name: "Signature Pizza (Medium)", price: 1300, category: "pizza", img: "assets/signature-pizza.jpg", desc: "Crown Kabab, Lazania or Behari Kabab" },
+  { id: "signature-pizza-large", name: "Signature Pizza (Large)", price: 1700, category: "pizza", img: "assets/signature-pizza.jpg", desc: "Crown Kabab, Lazania or Behari Kabab" },
+  { id: "premium-classic-small", name: "Premium Classic Pizza (Small)", price: 650, category: "pizza", img: "assets/premium-classic.jpg", desc: "Chicken Tikka, Fajita, Supreme, Vegi/Cheese Lover & more" },
+  { id: "premium-classic-medium", name: "Premium Classic Pizza (Medium)", price: 1100, category: "pizza", img: "assets/premium-classic.jpg", desc: "Chicken Tikka, Fajita, Supreme, Vegi/Cheese Lover & more" },
+  { id: "premium-classic-large", name: "Premium Classic Pizza (Large)", price: 1500, category: "pizza", img: "assets/premium-classic.jpg", desc: "Chicken Tikka, Fajita, Supreme, Vegi/Cheese Lover & more" },
+  { id: "premium-classic-2x-small", name: "2x Small Premium Classic", price: 1200, category: "pizza", img: "assets/premium-classic.jpg", desc: "Two small pizzas, mix any flavours" },
+  { id: "premium-classic-2x-medium", name: "2x Medium Premium Classic", price: 2050, category: "pizza", img: "assets/premium-classic.jpg", desc: "Two medium pizzas, mix any flavours" },
+  { id: "premium-classic-2x-large", name: "2x Large Premium Classic", price: 2800, category: "pizza", img: "assets/premium-classic.jpg", desc: "Two large pizzas, mix any flavours" },
+
+  // Crispy Chicken Corner
+  { id: "crispy-chicken-1pc", name: "Crispy Chicken (1 pc)", price: 230, category: "crispy", img: "assets/crispy-chicken.jpg", desc: "Golden fried, extra crispy" },
+  { id: "crispy-chicken-3pc", name: "Crispy Chicken (3 pcs)", price: 660, category: "crispy", img: "assets/crispy-chicken.jpg", desc: "Golden fried, extra crispy" },
+  { id: "crispy-chicken-5pc", name: "Crispy Chicken (5 pcs)", price: 1050, category: "crispy", img: "assets/crispy-chicken.jpg", desc: "Golden fried, extra crispy" },
+  { id: "hot-wings-5pc", name: "Hot Wings (5 pcs)", price: 350, category: "crispy", img: "assets/hot-wings.jpg", desc: "Spicy tossed wings" },
+  { id: "hot-wings-10pc", name: "Hot Wings (10 pcs)", price: 650, category: "crispy", img: "assets/hot-wings.jpg", desc: "Spicy tossed wings" },
+  { id: "nuggets-5pc", name: "Nuggets (5 pcs)", price: 280, category: "crispy", img: "assets/nuggets.jpg", desc: "Classic chicken nuggets" },
+  { id: "nuggets-10pc", name: "Nuggets (10 pcs)", price: 550, category: "crispy", img: "assets/nuggets.jpg", desc: "Classic chicken nuggets" },
+
+  // Fries Corner
+  { id: "french-fries-small", name: "French Fries (Small)", price: 200, category: "fries", img: "assets/french-fries.jpg", desc: "Golden, salted" },
+  { id: "french-fries-large", name: "French Fries (Large)", price: 350, category: "fries", img: "assets/french-fries.jpg", desc: "Golden, salted" },
+  { id: "spicy-garlic-fries-small", name: "Spicy Garlic Fries (Small)", price: 300, category: "fries", img: "assets/spicy-garlic-fries.jpg", desc: "Tossed in spicy garlic sauce" },
+  { id: "spicy-garlic-fries-large", name: "Spicy Garlic Fries (Large)", price: 400, category: "fries", img: "assets/spicy-garlic-fries.jpg", desc: "Tossed in spicy garlic sauce" },
+  { id: "pizza-fries-small", name: "Pizza Fries (Small)", price: 400, category: "fries", img: "assets/pizza-fries.jpg", desc: "Loaded with cheese, olives & sauce" },
+  { id: "pizza-fries-large", name: "Pizza Fries (Large)", price: 600, category: "fries", img: "assets/pizza-fries.jpg", desc: "Loaded with cheese, olives & sauce" },
+
+  // Rolls, Parathas & More
+  { id: "creamy-crunchy-pasta", name: "Creamy Crunchy Pasta", price: 700, category: "rolls", img: "assets/creamy-crunchy-pasta.jpg", desc: "Creamy pasta with crunchy topping" },
+  { id: "behari-roll", name: "Behari Roll", price: 500, category: "rolls", img: "assets/behari-roll.jpg", desc: "Classic behari kabab roll" },
+  { id: "sticko-sandwich", name: "Sticko Sandwich", price: 700, category: "rolls", img: "assets/sticko-sandwich.jpg", desc: "Served with fries & sauce" },
+  { id: "pizza-paratha", name: "Pizza Paratha", price: 600, category: "rolls", img: "assets/pizza-paratha.jpg", desc: "Paratha loaded with pizza toppings" },
+  { id: "zinger-paratha", name: "Zinger Paratha Roll", price: 420, category: "rolls", img: "assets/zinger-paratha.jpg", desc: "Mon: Rs. 380 — daily discounted roll" },
+  { id: "kabab-paratha", name: "Kabab Paratha Roll", price: 290, category: "rolls", img: "assets/kabab-paratha.jpg", desc: "Tue: Rs. 260 — daily discounted roll" },
+  { id: "zinger-kabab-paratha", name: "Zinger Kabab Paratha Roll", price: 520, category: "rolls", img: "assets/zinger-kabab-paratha.jpg", desc: "Wed: Rs. 470 — daily discounted roll" },
+  { id: "zinger-shwarma", name: "Zinger Shwarma", price: 400, category: "rolls", img: "assets/zinger-shwarma.jpg", desc: "Fri: Rs. 360 — daily discounted roll" },
+  { id: "kabab-shwarma", name: "Kabab Shwarma", price: 270, category: "rolls", img: "assets/kabab-shwarma.jpg", desc: "Sat: Rs. 240 — daily discounted roll" },
+  { id: "zinger-kabab-shwarma", name: "Zinger Kabab Shwarma", price: 480, category: "rolls", img: "assets/zinger-kabab-shwarma.jpg", desc: "Sun: Rs. 430 — daily discounted roll" },
 ];
 
 let cart = JSON.parse(localStorage.getItem("lfc-cart") || "[]");
-
-
 
 function renderMenu(category = "deals") {
   const grid = document.getElementById("menu-grid");
@@ -52,8 +107,6 @@ document.getElementById("menu-grid").addEventListener("click", (e) => {
   if (!btn) return;
   addToCart(btn.dataset.id);
 });
-
-
 
 function addToCart(id) {
   const existing = cart.find((c) => c.id === id);
@@ -153,7 +206,6 @@ navLinks.addEventListener("click", (e) => {
   if (e.target.tagName === "A") navLinks.classList.remove("open");
 });
 
-
 document.getElementById("checkout-btn").addEventListener("click", () => {
   if (cart.length === 0) {
     alert("Your cart is empty. Add something tasty first!");
@@ -171,7 +223,6 @@ document.getElementById("checkout-btn").addEventListener("click", () => {
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank", "noopener,noreferrer");
 });
-
 
 renderMenu("deals");
 renderCart();
