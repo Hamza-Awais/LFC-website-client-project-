@@ -86,7 +86,7 @@ function renderMenu(category = "deals") {
           <p class="item-desc">${item.desc}</p>
           <div class="item-footer">
             <span class="item-price">Rs. ${item.price}</span>
-            <button class="add-btn" data-id="${item.id}">Add +</button>
+            <button class="add-btn" data-id="${item.id}">${item.flavours || item.mealUpgrade ? "Choose +" : "Add +"}</button>
           </div>
         </div>
       </article>`
@@ -106,13 +106,88 @@ document.getElementById("menu-categories").addEventListener("click", (e) => {
 document.getElementById("menu-grid").addEventListener("click", (e) => {
   const btn = e.target.closest(".add-btn");
   if (!btn) return;
-  addToCart(btn.dataset.id);
+  const item = menuData.find((m) => m.id === btn.dataset.id);
+  if (item.flavours || item.mealUpgrade) {
+    openOptionsModal(item);
+  } else {
+    addToCart(item.id);
+  }
 });
 
-function addToCart(id) {
-  const existing = cart.find((c) => c.id === id);
+const optionsOverlay = document.getElementById("options-overlay");
+const optionsBox = document.getElementById("options-box");
+
+function openOptionsModal(item) {
+  const slots = item.flavourSlots || 1;
+  let flavourHTML = "";
+  if (item.flavours) {
+    for (let i = 0; i < slots; i++) {
+      const label = slots > 1 ? `Flavour ${i + 1}` : "Flavour";
+      flavourHTML += `
+        <label class="option-label">${label}</label>
+        <select class="flavour-select" data-slot="${i}">
+          ${item.flavours.map((f) => `<option value="${f}">${f}</option>`).join("")}
+        </select>`;
+    }
+  }
+  const mealHTML = item.mealUpgrade
+    ? `<label class="option-checkbox">
+         <input type="checkbox" id="meal-upgrade-check">
+         Make it a meal (+Rs. ${item.mealUpgrade})
+       </label>`
+    : "";
+  optionsBox.innerHTML = `
+    <div class="options-header">
+      <h3>${item.name}</h3>
+      <button class="cart-close" id="options-close">&times;</button>
+    </div>
+    <div class="options-body">
+      ${flavourHTML}
+      ${mealHTML}
+    </div>
+    <div class="options-footer">
+      <span class="options-price" id="options-price">Rs. ${item.price}</span>
+      <button class="btn-primary" id="options-confirm">Add to Cart</button>
+    </div>
+  `;
+  optionsOverlay.classList.add("open");
+  const priceLabel = document.getElementById("options-price");
+  const mealCheck = document.getElementById("meal-upgrade-check");
+  function updatePrice() {
+    const extra = mealCheck && mealCheck.checked ? item.mealUpgrade : 0;
+    priceLabel.textContent = `Rs. ${item.price + extra}`;
+  }
+  if (mealCheck) mealCheck.addEventListener("change", updatePrice);
+  document.getElementById("options-close").addEventListener("click", closeOptionsModal);
+  document.getElementById("options-confirm").addEventListener("click", () => {
+    const flavourSelects = optionsBox.querySelectorAll(".flavour-select");
+    const chosenFlavours = Array.from(flavourSelects).map((s) => s.value);
+    const extra = mealCheck && mealCheck.checked ? item.mealUpgrade : 0;
+    let displayName = item.name;
+    if (chosenFlavours.length) displayName += ` (${chosenFlavours.join(" + ")})`;
+    if (extra) displayName += " + Meal";
+    const lineId = `${item.id}__${chosenFlavours.join("-")}__${extra}`;
+    addToCart(item.id, { lineId, displayName, finalPrice: item.price + extra, img: item.img });
+    closeOptionsModal();
+  });
+}
+
+function closeOptionsModal() {
+  optionsOverlay.classList.remove("open");
+  optionsBox.innerHTML = "";
+}
+
+optionsOverlay.addEventListener("click", (e) => {
+  if (e.target === optionsOverlay) closeOptionsModal();
+});
+
+function addToCart(id, custom) {
+  const lineId = custom ? custom.lineId : id;
+  const existing = cart.find((c) => c.id === lineId);
   if (existing) {
     existing.qty += 1;
+  } else if (custom) {
+    cart.push({ id: lineId, name: custom.displayName, price: custom.finalPrice, img: custom.img, qty: 1 });
   } else {
     const product = menuData.find((m) => m.id === id);
     cart.push({ id: product.id, name: product.name, price: product.price, img: product.img, qty: 1 });
